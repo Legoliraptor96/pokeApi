@@ -4,14 +4,17 @@ const pokemonInfo = document.getElementById("pokemon-info");
 
 async function fetchPokemonList() {
   try {
-    const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=150");
+    const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=10");
     const data = await response.json();
 
     data.results.forEach(pokemon => {
       const pokemonId = getPokemonIdFromUrl(pokemon.url);
       const listItem = document.createElement("li");
       listItem.textContent = `${pokemonId}. ${pokemon.name}`;
-      listItem.addEventListener("click", () => fetchPokemonData(pokemon.url));
+      listItem.addEventListener("click", () => {
+        fetchPokemonData(pokemon.url);
+        setActivePokemon(listItem);
+      });
       pokemonList.appendChild(listItem);
     });
   } catch (error) {
@@ -20,8 +23,6 @@ async function fetchPokemonList() {
 }
 
 function getPokemonIdFromUrl(url) {
-    // The Pokemon URL is in the format: https://pokeapi.co/api/v2/pokemon/{pokemon-id}/
-    // Extract the Pokemon ID from the URL.
     const idRegex = /\/pokemon\/(\d+)\//;
     const match = url.match(idRegex);
     return match ? match[1] : "N/A";
@@ -49,4 +50,12 @@ async function fetchPokemonData(url) {
   }
 }
 
+function setActivePokemon(element) {
+    const allListItems = pokemonList.querySelectorAll("li");
+    allListItems.forEach(item => item.classList.remove("active-pokemon"));
+    element.classList.add("active-pokemon");
+  }
+
 fetchPokemonList();
+
+

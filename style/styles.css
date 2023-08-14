@@ -2,36 +2,85 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px;
     text-align: center;
+    background-image: url('/img/bkg.jpg');
+    background-size: cover; /* Para cubrir todo el elemento */
+    background-repeat: no-repeat; /* Para evitar la repetición */
+    background-position: center; /* Para centrar la imagen en el elemento */
   }
   
   h1 {
-    color: #f00;
+    color:black;
+    background-color: white;
+    border-radius: 10px;
+    border: 3px solid #354C30;
+
   }
   
-  .pokemon-list {
-    display: inline-block;
-    text-align: left;
-    width: 200px;
-  }
   
-  .pokemon-list li {
+  .pokemon-list-class li {
     cursor: pointer;
     list-style-type: none;
     padding: 5px;
   }
   
-  .pokemon-list li:hover {
+  .pokemon-list-class li:hover {
     background-color: #f2f2f2;
   }
+
+  .pokemon-list-class {
+    display: inline-block;
+    text-align: left;
+    width: 400px;
+    margin-left: 30px;
+    background-color: white;
+    border-radius: 10px;
+    border: 3px solid #354C30;
+  }
+
   
   .pokemon-details {
     display: inline-block;
     text-align: left;
     width: 400px;
     margin-left: 30px;
+    background-color: white;
+    border-radius: 10px;
+    border: 3px solid #354C30;
   }
+
+  .pokemon-list-class,
+.pokemon-details {
+  display: inline-block;
+  text-align: left;
+  width: calc(50% - 20px); /* El 50% asegura que ambos contenedores ocupen la mitad del ancho disponible */
+  /* El 33px es el espacio total ocupado por los bordes en ambos lados (6px para los bordes de ambos contenedores + 30px de margin-left en cada uno) */
+  background-color: white;
+  border-radius: 10px;
+  border: 3px solid #354C30;
+}
   
   #pokemon-info {
     border: 1px solid #ccc;
     padding: 10px;
   }
+
+  .list-item.active {
+    background-color: #f0f0f0;
+  }
+
+  .active-pokemon {
+    background-color: #B2ECB9;
+    border-radius: 5px;
+  }
+  
+  /* Estilo para la lista */
+  .pokemon-list-class ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .pokemon-list-class li {
+    cursor: pointer;
+    padding: 5px;
+  }
+  
